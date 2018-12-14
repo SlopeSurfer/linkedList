@@ -1,3 +1,4 @@
+//Just adding a comment as practice
 #ifndef GDATA_H
 #define GDATA_H
 #include <string>
