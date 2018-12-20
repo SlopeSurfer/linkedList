@@ -1,4 +1,3 @@
-#include "pch.h"
 #include "ListHeader.h"
 
 node::~node() {	//New is never called on next. next is just a pointer to some existing node. Just because
@@ -79,8 +78,8 @@ linkList& linkList::operator=(linkList&& other){
 //since you have already created the linkList before getting here, you are not adding it. 
 //By the same rationalization, two nodes that were created during the move constructor are not created here. So, 
 //reduce the number in nodec by two (yikes!!!). 
-		node::totalNodeCount--;
-		node::totalNodeCount--;
+//		node::totalNodeCount--;
+//		node::totalNodeCount--;
 
 	}
 	return *this;
@@ -188,4 +187,9 @@ node* const linkList::getTail()const { return tail; }
 bool compare_function(genData& s1, genData& s2)
 {
 	return (s1.getValue() < s2.getValue());
+}
+
+int functDouble(int inPut)
+{
+	return(2 * inPut);
 }

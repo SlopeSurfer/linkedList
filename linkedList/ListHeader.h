@@ -7,7 +7,8 @@ class node {
 	node* next = NULL;
 public:
 
-	static int totalNodeCount;
+//		static int totalNodeCount;
+	int totalNodeCount;
 
 	node() {
 		cout << "\nCalling node constructor with no arguments\n";
@@ -36,7 +37,8 @@ class linkList {
 	bool const deleteNode(genData inData, node* startNode) const;
 
 public:
-	static int totalNumberOfLists;
+//	static int totalNumberOfLists;
+	int totalNumberOfLists =2;
 	linkList();
 	~linkList();
 	linkList(const linkList& toCopy);
@@ -54,6 +56,10 @@ public:
 	void const makeNewNode(genData inData, node* nextNode, node* thisNode)const;
 };
 bool compare_function(genData& s1, genData& s2);
+
+//Adding a function just to see if I can get at it in google test.
+
+int functDouble(int inPut);
 
 #endif
 

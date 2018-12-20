@@ -15,21 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pch.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ListHeader.h">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GenData.h">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="linkedList.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="listHeader.cpp">
+    <ClCompile Include="Project1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
