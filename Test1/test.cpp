@@ -1,9 +1,10 @@
 #include "pch.h"
-//#include "../linkedList/ListHeader.h"
+#include "../linkedList/ListHeader.h"
 #include "../linkedList/ListHeader.cpp"
 #include "../linkedList/GenData.h"
 
-
+int node::totalNodeCount = 0;
+int linkList::totalNumberOfLists = 0;
 class linkListTest : public ::testing::Test {
 protected:
 	void SetUp() override {
@@ -29,15 +30,27 @@ protected:
 	genData* myData;
 	int *myInt;
 };
-TEST_F(linkListTest, positiveValues) {
+TEST_F(linkListTest, firstRoundValues) {
 	EXPECT_EQ(myData[2].getValue(),2);
 	EXPECT_GE(myInt[2], 1);
-	EXPECT_GE(myList.totalNumberOfLists, 2);
-	EXPECT_EQ(functDouble(2), 4);
-	EXPECT_EQ(functDouble(3), 6);
+	EXPECT_EQ(node::totalNodeCount, 8); //The number in the list + two
+	EXPECT_EQ(linkList::totalNumberOfLists, 1);	//The number of lists.
+
 }
 
-TEST(functDoubleTest, negaticeValues) {
-	EXPECT_EQ(functDouble(-2), -4);
-	EXPECT_EQ(functDouble(-3), -6);
+class linkListTestCont : public ::testing::Test {
+protected:
+	void SetUp() override {
+		linkList newList = myList;
+	}
+	linkList myList;
+	genData* myData;
+	int *myInt;
+};
+TEST_F(linkListTestCont, nextRoundValues) {
+	EXPECT_EQ(myData[2].getValue(), 2);
+	EXPECT_GE(myInt[2], 1);
+	EXPECT_EQ(node::totalNodeCount, 16); //The number in the list + two
+	EXPECT_EQ(linkList::totalNumberOfLists, 2);	//The number of lists.
+
 }
