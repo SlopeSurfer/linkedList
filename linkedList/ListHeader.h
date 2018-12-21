@@ -11,11 +11,15 @@ public:
 
 
 	node() {
+#ifdef _DEBUG
 		cout << "\nCalling node constructor with no arguments\n";
+#endif
 		totalNodeCount++;
 	};
 	node(genData inData) :nodeData(inData) {
+#ifdef _DEBUG
 		cout << "Calling node constructor with Data\n";
+#endif
 		totalNodeCount++;
 	};
 	~node();

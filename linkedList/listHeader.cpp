@@ -4,21 +4,27 @@ node::~node() {	//New is never called on next. next is just a pointer to some ex
 			//it is not = to NULL does not mean that it has any memory to clear. 
 			//Note, it is OK to delete it if it = NULL. But, if it does not equal NULL and has never been declared with 
 			//a new, then deleting it can cause a problem. 
+#ifdef _DEBUG
 	cout << "\nCalling node destructor";
+#endif
 	totalNodeCount--;
 	next = nullptr;
 //	delete next;	//Likely never necessary.
 }
 
 node::node(const node& toCopy) {
+#ifdef _DEBUG
 	cout << "Calling node copy constructor\n" << endl;
+#endif
 	nodeData = toCopy.nodeData;
 	next = toCopy.next;
 }
 
 node& node::operator=(const node & source) {
 	if (&source != this) {
+#ifdef _DEBUG
 		cout << "\nCalling node overloaded assignment operator " << endl;
+#endif
 		this->nodeData = source.nodeData;
 		this->next->setNext(source.getNext());
 	}
@@ -26,14 +32,18 @@ node& node::operator=(const node & source) {
 }
 
 linkList::linkList() {
+#ifdef _DEBUG
 	cout << "\nCalling linkList constructor\n";
+#endif
 	head = new node;
 	tail = new node;
 	head->setNext(tail);
 	totalNumberOfLists++;
 }
 linkList::~linkList() {
+#ifdef _DEBUG
 	cout << "\nCalling linkList destructor" << endl;
+#endif
 	int nodeCount = 0;
 	deleteList(head, nodeCount);
 	delete tail;
@@ -42,7 +52,9 @@ linkList::~linkList() {
 }
 
 linkList::linkList(const linkList& toCopy) {
+#ifdef _DEBUG
 	cout << "\nCalling linkList copy constructor " << endl;
+#endif
 	head = new node;
 	tail = new node;
 	head->setNext(tail);
@@ -50,7 +62,9 @@ linkList::linkList(const linkList& toCopy) {
 	totalNumberOfLists++;
 }
 linkList& linkList::operator=( const linkList& toCopy) {
+#ifdef _DEBUG
 	cout << "\nCalling linkList assignment operator" << endl;
+#endif
 
 	//Note that head and tail were already created, because the assignment operator is only called when the object already exists. 
 	copyNodes(toCopy.getHead(), toCopy.getTail());
@@ -58,7 +72,9 @@ linkList& linkList::operator=( const linkList& toCopy) {
 	return *this;
 }
 linkList::linkList(linkList&& other) :head(nullptr), tail(nullptr) {
+#ifdef _DEBUG
 	cout << "\nCalling linkList move constructor" << endl;
+#endif
 
 	head = other.head;
 	tail = other.tail;
@@ -68,7 +84,9 @@ linkList::linkList(linkList&& other) :head(nullptr), tail(nullptr) {
 							//destructs additional linkLists when the whole thing goes out of scope. 
 }
 linkList& linkList::operator=(linkList&& other){
+#ifdef _DEBUG
 	cout << "\nCalling linkList move assignment operator" << endl;
+#endif
 	if (this != &other) {
 		head = other.head;
 		tail = other.tail;

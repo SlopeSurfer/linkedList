@@ -153,7 +153,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Copy.h" />
     <ClInclude Include="GenData.h" />
+    <ClInclude Include="Header.h" />
     <ClInclude Include="ListHeader.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
